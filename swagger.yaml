@@ -1,0 +1,469 @@
+openapi: 3.0.0
+info:
+  title: Enrich API
+  version: 1.0.0
+servers:
+  - url: TBC
+paths:
+  /asset:
+    x-oad-type: operation
+    put:
+      tags:
+        - Single Operations
+      description: Creates Enrich asset.
+      servers:
+        - url: 'TBC'
+      parameters:
+        - name: UserCredentialHeader
+          in: header
+          description: Purpose Credential
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+        required: true
+      responses:
+        '202':
+          description: >-
+            The request to create an asset was successfully accepted for processing.
+            The status of the request can be tracked by calling /receipt/{receiptId}
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptResponse'
+        '400':
+          description: >-
+            The request could not be processed.
+
+            This could be due to one of the following conditions:
+              * Missing credentials
+              * The request failed validation checks
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            The supplied credentials do not match an Enrich API user.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: >-
+            The supplied credentials do not have the correct permissions to perform the operation.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: >-
+            An unhandled error occured while processing the request.
+            Please contact support in this instance.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /bulk/asset:
+    x-oad-type: operation
+    put:
+      tags:
+        - Bulk Operations
+      description: Creates an Enrich asset(s).
+      servers:
+        - url: 'TBC'
+      parameters:
+        - name: UserCredentialHeader
+          in: header
+          description: Purpose Credential
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkCreateAssetRequest'
+        required: true
+      responses:
+        '202':
+          description: >-
+            The request to create asset(s) was successfully accepted for processing.
+            The status of the request can be tracked by calling /receipt/{receiptId}
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReceiptResponse'
+        '400':
+          description: >-
+            The request could not be processed.
+
+            This could be due to one of the following conditions:
+              * Missing credentials
+              * The request failed validation checks
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            The supplied credentials do not match an Enrich API user.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: >-
+            The supplied credentials do not have the correct permissions to perform the operation.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: >-
+            An unhandled error occured while processing the request.
+            Please contact support in this instance.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/receipt/{id}':
+    x-oad-type: operation
+    get:
+      tags:
+        - Query Operations
+      description: Get the status of an operation.
+      servers:
+        - url: 'TBC'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        x-oad-type: parameter
+        schema:
+          type: string
+      - name: UserCredentialHeader
+        in: header
+        description: Purpose Credential
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetOperationStatusResponse'
+        '400':
+          description: >-
+            The request could not be processed.
+
+            This could be due to one of the following conditions:
+              * Missing credentials
+              * The supplied receipt id is not valid
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            The supplied credentials do not match an Enrich API user.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: >-
+            The supplied credentials do not have the correct permissions to perform the operation.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: >-
+            An unhandled error occured while processing the request.
+            Please contact support in this instance.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    CreateAssetRequest:
+      x-oad-type: object
+      type: object
+      properties:
+        correlationId:
+          x-oad-type: string
+          type: string
+        asset:
+          $ref: '#/components/schemas/Asset'
+      required:
+        - correlationId
+        - asset
+    BulkCreateAssetRequest:
+      x-oad-type: object
+      type: object
+      properties:
+        assets:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateAssetRequest'
+    Asset:
+      x-oad-type: object
+      type: object
+      properties:
+        subcode:
+          $ref: '#/components/schemas/SubCode'
+        url:
+          x-oad-type: string
+          type: string
+        embedded:
+          x-oad-type: boolean
+          type: boolean
+        metadata:
+          oneOf:
+            - $ref: '#/components/schemas/PublicAssetMetadata'
+            - $ref: '#/components/schemas/PrivateAssetMetadata'
+            - $ref: '#/components/schemas/InternalAssetMetadata'
+      required:
+        - subcode
+        - url
+        - embedded
+        - metadata
+    PublicAssetMetadata:
+      allOf:
+        - $ref: '#/components/schemas/BaseAssetMetadata'
+        - type: object
+          required:
+            - assetType
+            - assetStyle
+            - visibility
+          properties:
+            visibility:
+              type: string
+              enum:
+                - public
+            assetType:
+              $ref: '#/components/schemas/AssetType'
+            assetStyle:
+              $ref: '#/components/schemas/AssetStyle'
+    PrivateAssetMetadata:
+      allOf:
+        - $ref: '#/components/schemas/BaseAssetMetadata'
+        - type: object
+          required:
+            - visibility
+          properties:
+            visibility:
+              type: string
+              enum:
+                - private
+    InternalAssetMetadata:
+      allOf:
+        - $ref: '#/components/schemas/BaseAssetMetadata'
+        - type: object
+          required:
+            - visibility
+          properties:
+            visibility:
+              type: string
+              enum:
+                - internal
+    BaseAssetMetadata:
+      x-oad-type: object
+      type: object
+      properties:
+        name:
+          x-oad-type: string
+          type: string
+          minLength: 1
+        ownerEmail:
+          x-oad-type: string
+          type: string
+          format: email
+        liveDate:
+          x-oad-type: string
+          type: string
+          format: date
+        endDate:
+          x-oad-type: string
+          type: string
+          format: date
+        tags:
+          x-oad-type: array
+          type: array
+          items:
+            x-oad-type: string
+            type: string
+        folder:
+          $ref: '#/components/schemas/Folder'
+      required:
+        - name
+        - ownerEmail
+    AssetType:
+      x-oad-type: string
+      type: string
+      enum:
+        - image
+        - document
+        - video
+        - music
+        - other
+    AssetStyle:
+      x-oad-type: string
+      type: string
+      enum:
+        - advert
+        - brand
+        - group
+        - instructional
+        - lifestyle
+        - marketingCopy
+        - product
+        - recipe
+        - 3rdParty
+        - other
+    SubCode:
+      x-oad-type: string
+      type: string
+      minLength: 7
+      maxLength: 7
+      pattern: '^(A|O)[A-Z]{3}\d{3}$'
+    Folder:
+      x-oad-type: object
+      type: object
+      properties:
+        name:
+          x-oad-type: string
+          type: string
+          minLength: 1
+        subfolder:
+          $ref: '#/components/schemas/Folder'
+      required:
+        - name
+    ReceiptResponse:
+      x-oad-type: object
+      type: object
+      properties:
+        receiptId:
+          x-oad-type: string
+          type: string
+    AssetOperationStatusResponse:
+      x-oad-type: object
+      type: object
+      properties:
+        receiptId:
+          x-oad-type: string
+          type: string
+        assets:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetOperationResult'
+    AssetOperationResult:
+      x-oad-type: object
+      type: object
+      properties:
+        correlationId:
+          x-oad-type: string
+          type: string
+        assetId:
+          x-oad-type: integer
+          type: integer
+          format: int32
+          nullable: true
+          description: If the request was successful then this will be present
+        assetVersionId:
+          x-oad-type: integer
+          type: integer
+          format: int32
+          nullable: true
+          description: If the request was successful then this will be present
+        status:
+          $ref: '#/components/schemas/OperationStatus'
+        type:
+          $ref: '#/components/schemas/OperationType'
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+      required:
+        - correlationId
+        - status
+        - messages
+        - type
+    OperationStatus:
+      x-oad-type: string
+      type: string
+      enum:
+        - pending
+        - inProgress
+        - success
+        - failure
+    OperationType:
+      x-oad-type: string
+      type: string
+      enum:
+        - create
+    Message:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+        type:
+          $ref: '#/components/schemas/MessageType'
+        severity:
+          x-oad-type: string
+          type: string
+          enum:
+            - info
+            - warning
+            - error
+    MessageType:
+      x-oad-type: string
+      type: string
+      enum:
+        - created
+        - assetOwnerDoesNotExist
+        - assetOwnerDisabled
+        - downloadFailed
+        - invalidUrl
+        - invalidFileExtension
+        - unableToResolveFileExtension 
+        - nonExistingSubcode
+        - unauthorisedSubcode
+        - noCreatePermission
+        - fileSizeLimitExceeded
+        - failure
+    Error:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
