@@ -14,7 +14,7 @@ paths:
       servers:
         - url: 'TBC'
       parameters:
-        - name: UserCredentialHeader
+        - name: user_credential
           in: header
           description: Purpose Credential
           required: true
@@ -82,7 +82,7 @@ paths:
       servers:
         - url: 'TBC'
       parameters:
-        - name: UserCredentialHeader
+        - name: user_credential
           in: header
           description: Purpose Credential
           required: true
@@ -156,7 +156,7 @@ paths:
         x-oad-type: parameter
         schema:
           type: string
-      - name: UserCredentialHeader
+      - name: user_credential
         in: header
         description: Purpose Credential
         required: true
@@ -451,6 +451,7 @@ components:
         - created
         - assetOwnerDoesNotExist
         - assetOwnerDisabled
+        - invalidAssetOwnerPermissions
         - downloadFailed
         - invalidUrl
         - invalidFileExtension
