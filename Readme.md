@@ -65,7 +65,7 @@ A ``correlationId`` must be provided for each asset. This ``correlationId`` is l
             }
         },
         {
-            "correlationId": "c764132c-3ab3-4c0f-aad4-d741be1d7ca3",
+            "correlationId": "ecab3b94-e4a9-4844-9ed1-245484010847",
             "asset": {
                 "subcode": "OCOM058",
                 "url": "https://www.gstatic.com/webp/gallery3/1.sm.png",
