@@ -1,10 +1,16 @@
-**THIS IS A WORK IN PROGRESS**
-
 # Nielsen Brandbank - Enrich API
 
 A JSON API for the creation and management of enrich assets.
 
+# Version 1.0.0 Release Notes
+* New endpoint for creating a single asset : 'PUT asset'
+* New endpoint for creating assets in bulk : 'PUT bulk/asset'
+* New endpoint for fetching request status : 'GET receipt/{receiptId}'
+* Abillity to specificy a folder, new or existing, where an asset should be placed.
 
+## Authentication
+A 'user_credential' header must be supplied in all requests made to the API. 
+This user credential should have been provided to you by Nielsen Brandbank when first signing up to use the Enrich API. 
 
 # Endpoints 
 ## PUT api/bulk/asset
@@ -241,12 +247,6 @@ Major : Breaking change
 Minor : Non breaking change
 
 Patch : Backwards compatible bug fixes
-
-# Version 1.0.0 Release Notes
-* New endpoint for creating a single asset : 'PUT asset'
-* New endpoint for creating assets in bulk : 'PUT bulk/asset'
-* New endpoint for fetching request status : 'GET receipt/{receiptId}'
-* Abillity to specificy a folder, new or existing, where an asset should be placed.
 
 # Known Issues
 - If the content at the URL takes longer than 10 minutes to download the asset operation will get stuck in an 'inProgress' state. 
