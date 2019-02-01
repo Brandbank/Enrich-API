@@ -12,6 +12,18 @@ A JSON API for the creation and management of enrich assets.
 A 'user_credential' header must be supplied in all requests made to the API. 
 This user credential should have been provided to you by Nielsen Brandbank when first signing up to use the Enrich API. 
 
+# Swagger
+All requests made to the API are validated against the following Swagger schema : ![swagger.yaml](swagger.yaml?raw=true "swagger api") 
+
+Requests made to the API that do not pass this swagger schema will be rejected and return a 400 HTTP status code.
+
+## Example Swagger Validation Error Response
+```
+{
+    "message": "Failed to validate against schema TODO($ref to swagger schema) - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
+}
+```
+
 # Endpoints 
 ## PUT api/bulk/asset
 Creates a set of enrich assets. On success, returns a 202 HTTP status code along with a receipt ID which is used to query the status of the request.
@@ -225,17 +237,6 @@ Returns the status of a request.
 - The content at the URL must be accessible without any need for authentication. For example a leased or SAS URL https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1
 - The URL must be a document path (e.g. https://enrichcontent.storage.com/testing/image.png). If the URL is not a document path an attempt will be made to resolve the file extension from the ``content-type`` header.
 
-# Swagger Schema 
-All requests made to the API are validated against the following Swagger schema : ![swagger.yaml](swagger.yaml?raw=true "swagger api") 
-
-Requests made to the API that do not pass this swagger schema will be rejected and return a 400 HTTP status code.
-
-## Example Swagger Validation Error Response
-```
-{
-    "message": "Failed to validate against schema TODO($ref to swagger schema) - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
-}
-```
 
 ## Versioning Stratergy
 Versioning stratergy based on https://semver.org/
