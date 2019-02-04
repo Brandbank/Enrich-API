@@ -20,7 +20,7 @@ Requests made to the API that do not pass this swagger schema will be rejected a
 ## Example Swagger Validation Error Response
 ```
 {
-    "message": "Failed to validate against schema ![swagger.yaml](swagger.yaml?raw=true "swagger api") - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
+    "message": "Failed to validate against schema https://raw.githubusercontent.com/Brandbank/Enrich-API/master/swagger.yaml - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
 }
 ```
 
