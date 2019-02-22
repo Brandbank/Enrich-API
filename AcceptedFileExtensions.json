@@ -1,0 +1,399 @@
+{
+    "validFileExtensions": [
+        "ai",
+        "bmp",
+        "dcr",
+        "eps",
+        "webp",
+        "tiff",
+        "t",
+        "tif",
+        "srf",
+        "svg",
+        "s",
+        "ps",
+        "psd",
+        "p",
+        "png",
+        "jpeg",
+        "jpg",
+        "jpe",
+        "i",
+        "gif",
+        "f",
+        "exr",
+        "raw",
+        "cr2",
+        "raf",
+        "mrw",
+        "nef",
+        "orf",
+        "dng",
+        "pef",
+        "x3f",
+        "erf",
+        "mos",
+        "rw2",
+        "fr3",
+        "r3d",
+        "jpc",
+        "jp2",
+        "webpll",
+        "tga",
+        "3fr",
+        "7z",
+        "c",
+        "cs",
+        "css",
+        "csv",
+        "doc",
+        "dot",
+        "docx",
+        "dotx",
+        "xht",
+        "xhtml",
+        "xls",
+        "xlsx",
+        "xml",
+        "xps",
+        "zip",
+        "x",
+        "ttf",
+        "txt",
+        "tar",
+        "tgz",
+        "rtf",
+        "rar",
+        "ppt",
+        "pptx",
+        "pdf",
+        "ocx",
+        "odb",
+        "odc",
+        "odf",
+        "odg",
+        "odp",
+        "ods",
+        "odt",
+        "otf",
+        "lsx",
+        "js",
+        "htm",
+        "html",
+        "gz",
+        "h",
+        "idml",
+        "indd",
+        "idd",
+        "avi",
+        "webm",
+        "wm",
+        "wmv",
+        "swf",
+        "rm",
+        "mk",
+        "mov",
+        "mp4",
+        "mpe",
+        "mpeg",
+        "mpg",
+        "m2v",
+        "m4v",
+        "h264",
+        "flv",
+        "aa",
+        "aac",
+        "ac",
+        "aw",
+        "wav",
+        "wma",
+        "swa",
+        "st",
+        "ra",
+        "ogg",
+        "mp2",
+        "mp3",
+        "m3u",
+        "m4a",
+        "ma",
+        "fla"
+    ],
+    "mimeTypeToFileExtensionMappings": [
+        {
+            "mimeType": "application/postscript",
+            "fileExtension": "ai"
+        },
+        {
+            "mimeType": "image/bmp",
+            "fileExtension": "bmp"
+        },
+        {
+            "mimeType": "application/x-director",
+            "fileExtension": "dcr"
+        },
+        {
+            "mimeType": "application/postscript",
+            "fileExtension": "ai"
+        },
+        {
+            "mimeType": "image/tiff",
+            "fileExtension": "tif"
+        },
+        {
+            "mimeType": "application/x-troff",
+            "fileExtension": "roff"
+        },
+        {
+            "mimeType": "image/tiff",
+            "fileExtension": "tif"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "image/svg+xml",
+            "fileExtension": "svg"
+        },
+        {
+            "mimeType": "application/postscript",
+            "fileExtension": "ai"
+        },
+        {
+            "mimeType": "image/png",
+            "fileExtension": "png"
+        },
+        {
+            "mimeType": "image/jpeg",
+            "fileExtension": "jpeg"
+        },
+        {
+            "mimeType": "image/jpeg",
+            "fileExtension": "jpeg"
+        },
+        {
+            "mimeType": "image/jpeg",
+            "fileExtension": "jpeg"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "image/gif",
+            "fileExtension": "gif"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "text/css",
+            "fileExtension": "css"
+        },
+        {
+            "mimeType": "application/msword",
+            "fileExtension": "doc"
+        },
+        {
+            "mimeType": "application/msword",
+            "fileExtension": "doc"
+        },
+        {
+            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "fileExtension": "docx"
+        },
+        {
+            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+            "fileExtension": "dotx"
+        },
+        {
+            "mimeType": "application/xhtml+xml",
+            "fileExtension": "xht"
+        },
+        {
+            "mimeType": "application/xhtml+xml",
+            "fileExtension": "xht"
+        },
+        {
+            "mimeType": "application/vnd.ms-excel",
+            "fileExtension": "xla"
+        },
+        {
+            "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "fileExtension": "xlsx"
+        },
+        {
+            "mimeType": "text/xml",
+            "fileExtension": "xml"
+        },
+        {
+            "mimeType": "application/vnd.ms-xpsdocument",
+            "fileExtension": "xps"
+        },
+        {
+            "mimeType": "application/zip",
+            "fileExtension": "zip"
+        },
+        {
+            "mimeType": "application/directx",
+            "fileExtension": "x"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "application/x-tar",
+            "fileExtension": "tar"
+        },
+        {
+            "mimeType": "application/x-compressed",
+            "fileExtension": "tgz"
+        },
+        {
+            "mimeType": "application/rtf",
+            "fileExtension": "rtf"
+        },
+        {
+            "mimeType": "application/vnd.ms-powerpoint",
+            "fileExtension": "pot"
+        },
+        {
+            "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            "fileExtension": "pptx"
+        },
+        {
+            "mimeType": "application/pdf",
+            "fileExtension": "pdf"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "video/x-la-asf",
+            "fileExtension": "lsf"
+        },
+        {
+            "mimeType": "text/html",
+            "fileExtension": "htm"
+        },
+        {
+            "mimeType": "text/html",
+            "fileExtension": "htm"
+        },
+        {
+            "mimeType": "application/x-gzip",
+            "fileExtension": "gz"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        },
+        {
+            "mimeType": "video/x-msvideo",
+            "fileExtension": "avi"
+        },
+        {
+            "mimeType": "video/x-ms-wm",
+            "fileExtension": "wm"
+        },
+        {
+            "mimeType": "video/x-ms-wmv",
+            "fileExtension": "wmv"
+        },
+        {
+            "mimeType": "application/x-shockwave-flash",
+            "fileExtension": "swf"
+        },
+        {
+            "mimeType": "application/vnd.rn-realmedia",
+            "fileExtension": "rm"
+        },
+        {
+            "mimeType": "text/plain",
+            "fileExtension": "txt"
+        },
+        {
+            "mimeType": "video/quicktime",
+            "fileExtension": "mov"
+        },
+        {
+            "mimeType": "video/mpeg",
+            "fileExtension": "m1v"
+        },
+        {
+            "mimeType": "video/mpeg",
+            "fileExtension": "m1v"
+        },
+        {
+            "mimeType": "video/mpeg",
+            "fileExtension": "m1v"
+        },
+        {
+            "mimeType": "video/mpeg",
+            "fileExtension": "m1v"
+        },
+        {
+            "mimeType": "video/x-flv",
+            "fileExtension": "flv"
+        },
+        {
+            "mimeType": "audio/wav",
+            "fileExtension": "wav"
+        },
+        {
+            "mimeType": "audio/x-ms-wma",
+            "fileExtension": "wma"
+        },
+        {
+            "mimeType": "application/x-director",
+            "fileExtension": "dcr"
+        },
+        {
+            "mimeType": "audio/x-pn-realaudio",
+            "fileExtension": "ra"
+        },
+        {
+            "mimeType": "audio/mpeg",
+            "fileExtension": "mp3"
+        },
+        {
+            "mimeType": "audio/mpeg",
+            "fileExtension": "mp3"
+        },
+        {
+            "mimeType": "audio/x-mpegurl",
+            "fileExtension": "m3u"
+        },
+        {
+            "mimeType": "application/octet-stream",
+            "fileExtension": "aaf"
+        }
+    ]
+}
