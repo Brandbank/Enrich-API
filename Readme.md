@@ -237,6 +237,8 @@ Returns the status of a request.
 - The content at the URL must be accessible without any need for authentication. For example a leased or SAS URL https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1
 - The URL must be a document path (e.g. https://enrichcontent.storage.com/testing/image.png). If the URL is not a document path an attempt will be made to resolve the file extension from the ``content-type`` header.
 
+## Accepted File Extensions
+- See ![AcceptedFileExtensions.json](AcceptedFileExtensions.json?raw=true "AcceptedFileExtension") for a list of accepted file extensions and the mappings used when no file extension is present on the URL.
 
 ## Versioning Stratergy
 Versioning stratergy based on https://semver.org/
@@ -251,3 +253,4 @@ Patch : Backwards compatible bug fixes
 
 # Known Issues
 - If the content at the URL takes longer than 10 minutes to download the asset operation will get stuck in an 'inProgress' state. 
+
