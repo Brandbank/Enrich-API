@@ -6,25 +6,25 @@ A JSON API for the creation and management of enrich assets.
 * New endpoint for creating a single asset : 'PUT asset'
 * New endpoint for creating assets in bulk : 'PUT bulk/asset'
 * New endpoint for fetching request status : 'GET receipt/{receiptId}'
-* Abillity to specificy a folder, new or existing, where an asset should be placed.
+* Ability to specify a folder, new or existing, where an asset should be placed.
 
 ## Authentication
-A 'user_credential' header must be supplied in all requests made to the API. 
-This user credential should have been provided to you by Nielsen Brandbank when first signing up to use the Enrich API. 
+A 'user_credential' header must be supplied in all requests made to the API.
+This user credential should have been provided to you by Nielsen Brandbank when first signing up to use the Enrich API.
 
 # Swagger
-All requests made to the API are validated against the following Swagger schema : ![swagger.yaml](swagger.yaml?raw=true "swagger api") 
+All requests made to the API are validated against the following Swagger schema : ![swagger.yaml](swagger.yaml?raw=true "swagger api")
 
 Requests made to the API that do not pass this swagger schema will be rejected and return a 400 HTTP status code.
 
 ## Example Swagger Validation Error Response
 ```
 {
-    "message": "Failed to validate against schema https://raw.githubusercontent.com/Brandbank/Enrich-API/master/swagger.yaml - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
+   "message": "Failed to validate against schema https://raw.githubusercontent.com/Brandbank/Enrich-API/master/swagger.yaml - Required properties are missing from object: correlationId. Path 'assets[0]', line 31, position 9."
 }
 ```
 
-# Endpoints 
+# Endpoints
 ## PUT api/bulk/asset
 Creates a set of enrich assets. On success, returns a 202 HTTP status code along with a receipt ID which is used to query the status of the request.
 
@@ -33,97 +33,97 @@ A ``correlationId`` must be provided for each asset. This ``correlationId`` is l
 ### Example Request
 ```
 {
-    "assets": [
-        {
-            "correlationId": "d81acecf-bd60-4a0e-a982-68d17c746c74",
-            "asset": {
-                "subcode": "OCOM058",
-                "url": "https://www.gstatic.com/webp/gallery3/2.png",
-                "embedded": false,
-                "metadata": {
-                    "name": "My Test Asset 1",
-                    "ownerEmail": "test.user@brandbank.com",
-                    "visibility": "public",
-                    "assetStyle": "advert",
-                    "assetType": "image",
-                    "tags": [
-                        "mytag",
-                        "data"
-                    ],
-                    "folder": {
-                        "name": "fruit",
-                        "subfolder": {
-                            "name": "apple",
-                            "subfolder": {
-                                "name": "adverts"
-                            }
-                        }
-                    },
-                    "liveDate": "2019-01-21",
-                    "endDate": "2019-01-23"
-                }
-            }
-        },
-        {
-            "correlationId": "ecab3b94-e4a9-4844-9ed1-245484010847",
-            "asset": {
-                "subcode": "OCOM058",
-                "url": "https://www.gstatic.com/webp/gallery3/1.sm.png",
-                "embedded": false,
-                "metadata": {
-                    "name": "My Test Asset 2",
-                    "ownerEmail": "test.user@brandbank.com",
-                    "visibility": "internal",
-                    "tags": [
-                        "mytag",
-                        "data"
-                    ],
-                    "folder": {
-                        "name": "fruit",
-                        "subfolder": {
-                            "name": "apple",
-                            "subfolder": {
-                                "name": "recipes"
-                            }
-                        }
-                    },
-                    "liveDate": "2019-01-21",
-                    "endDate": "2019-01-23"
-                }
-            }
-        },
-        {
-            "correlationId": "c764132c-3ab3-4c0f-aad4-d741be1d7ca3",
-            "asset": {
-                "subcode": "OCOM100",
-                "url": "https://www.youtube.com/watch?v=m1vNNjEMMYs",
-                "embedded": true,
-                "metadata": {
-                    "name": "My Test Asset 3",
-                    "ownerEmail": "test.user@brandbank.com",
-                    "visibility": "private",
-                    "tags": [
-                        "mytag",
-                        "data"
-                    ],
-                    "folder": {
-                        "name": "promo",
-                        "subfolder": {
-                            "name": "nielsen"
-                        }
-                    },
-                    "liveDate": "2019-01-21",
-                    "endDate": "2019-01-26"
-                }
-            }
-        }
-    ]
+   "assets": [
+       {
+           "correlationId": "d81acecf-bd60-4a0e-a982-68d17c746c74",
+           "asset": {
+               "subcode": "OCOM058",
+               "url": "https://www.gstatic.com/webp/gallery3/2.png",
+               "embedded": false,
+               "metadata": {
+                   "name": "My Test Asset 1",
+                   "ownerEmail": "test.user@brandbank.com",
+                   "visibility": "public",
+                   "assetStyle": "advert",
+                   "assetType": "image",
+                   "tags": [
+                       "mytag",
+                       "data"
+                   ],
+                   "folder": {
+                       "name": "fruit",
+                       "subfolder": {
+                           "name": "apple",
+                           "subfolder": {
+                               "name": "adverts"
+                           }
+                       }
+                   },
+                   "liveDate": "2019-01-21",
+                   "endDate": "2019-01-23"
+               }
+           }
+       },
+       {
+           "correlationId": "ecab3b94-e4a9-4844-9ed1-245484010847",
+           "asset": {
+               "subcode": "OCOM058",
+               "url": "https://www.gstatic.com/webp/gallery3/1.sm.png",
+               "embedded": false,
+               "metadata": {
+                   "name": "My Test Asset 2",
+                   "ownerEmail": "test.user@brandbank.com",
+                   "visibility": "internal",
+                   "tags": [
+                       "mytag",
+                       "data"
+                   ],
+                   "folder": {
+                       "name": "fruit",
+                       "subfolder": {
+                           "name": "apple",
+                           "subfolder": {
+                               "name": "recipes"
+                           }
+                       }
+                   },
+                   "liveDate": "2019-01-21",
+                   "endDate": "2019-01-23"
+               }
+           }
+       },
+       {
+           "correlationId": "c764132c-3ab3-4c0f-aad4-d741be1d7ca3",
+           "asset": {
+               "subcode": "OCOM100",
+               "url": "https://www.youtube.com/watch?v=m1vNNjEMMYs",
+               "embedded": true,
+               "metadata": {
+                   "name": "My Test Asset 3",
+                   "ownerEmail": "test.user@brandbank.com",
+                   "visibility": "private",
+                   "tags": [
+                       "mytag",
+                       "data"
+                   ],
+                   "folder": {
+                       "name": "promo",
+                       "subfolder": {
+                           "name": "nielsen"
+                       }
+                   },
+                   "liveDate": "2019-01-21",
+                   "endDate": "2019-01-26"
+               }
+           }
+       }
+   ]
 }
 ```
 ### Example Response
 ```
 {
-    "receiptId": "f7b3c859-d3dc-4831-b83b-9d2f3ffd9f98"
+   "receiptId": "f7b3c859-d3dc-4831-b83b-9d2f3ffd9f98"
 }
 ```
 ## PUT api/asset
@@ -134,40 +134,40 @@ A ``correlationId`` must be provided along with the asset. This ``correlationId`
 ### Example Request
 ```
 {
-    "correlationId": "4dd5bd13-eff3-40e9-a30d-37f19253245c",
-    "asset": {
-        "subcode": "OCOM058",
-        "url": "https://www.gstatic.com/webp/gallery3/2.png",
-        "embedded": false,
-        "metadata": {
-            "name": "My Test Asset",
-            "ownerEmail": "test.user@brandbank.com",
-            "visibility": "public",
-            "assetStyle": "advert",
-            "assetType": "image",
-            "tags": [
-                "mytag",
-                "data"
-            ],
-            "folder": {
-                "name": "fruit",
-                "subfolder": {
-                    "name": "apple",
-                    "subfolder": {
-                        "name": "adverts"
-                    }
-                }
-            },
-            "liveDate": "2019-01-21",
-            "endDate": "2019-01-23"
-        }
-    }
+   "correlationId": "4dd5bd13-eff3-40e9-a30d-37f19253245c",
+   "asset": {
+       "subcode": "OCOM058",
+       "url": "https://www.gstatic.com/webp/gallery3/2.png",
+       "embedded": false,
+       "metadata": {
+           "name": "My Test Asset",
+           "ownerEmail": "test.user@brandbank.com",
+           "visibility": "public",
+           "assetStyle": "advert",
+           "assetType": "image",
+           "tags": [
+               "mytag",
+               "data"
+           ],
+           "folder": {
+               "name": "fruit",
+               "subfolder": {
+                   "name": "apple",
+                   "subfolder": {
+                       "name": "adverts"
+                   }
+               }
+           },
+           "liveDate": "2019-01-21",
+           "endDate": "2019-01-23"
+       }
+   }
 }
 ```
 ### Response
 ```
 {
-    "receiptId": "c04d1d94-bbb2-482c-82e6-e0b985d4315c"
+   "receiptId": "c04d1d94-bbb2-482c-82e6-e0b985d4315c"
 }
 ```
 ## GET receipt/{receiptId}
@@ -175,61 +175,61 @@ Returns the status of a request.
 ### Example Response
 ```
 {
-    "receiptId": "940147af-2a95-45fe-80fb-118d0ccbeea8",
-    "assets": [
-        {
-            "correlationId": "c764132c-3ab3-4c0f-aad4-d741be1d7ca3",
-            "assetId": 108263,
-            "assetVersionId": 110280,
-            "status": "success",
-            "type": "create",
-            "messages": []
-        },
-        {
-            "correlationId": "d81acecf-bd60-4a0e-a982-68d17c746c74",
-            "assetId": null,
-            "assetVersionId": null,
-            "status": "pending",
-            "type": "create",
-            "messages": []
-        },
-        {
-            "correlationId": "4fe194a3-45e7-4a44-b7c4-70a6a6a2e86e",
-            "assetId": null,
-            "assetVersionId": null,
-            "status": "inProgress",
-            "type": "create",
-            "messages": []
-        },
-        {
-            "correlationId": "e71d01fd-1d2d-4214-98f4-586f1db44c02",
-            "assetId": null,
-            "assetVersionId": null,
-            "status": "failed",
-            "type": "create",
-            "messages": [
-                {
-                    "message": "The content at https://www.gstatic.com/webp/gallery3/1.sm.pnx has an invalid file extension .pnx",
-                    "type": "invalidFileExtension",
-                    "severity": "error"
-                }
-            ]
-        },
-        {
-            "correlationId": "e266e3ca-8495-4d9a-abb1-58206e933561",
-            "assetId": null,
-            "assetVersionId": null,
-            "status": "failed",
-            "type": "create",
-            "messages": [
-                {
-                    "message": "Invalid subcode OCOM057",
-                    "type": "invalidSubcode",
-                    "severity": "error"
-                }
-            ]
-        }
-    ]
+   "receiptId": "940147af-2a95-45fe-80fb-118d0ccbeea8",
+   "assets": [
+       {
+           "correlationId": "c764132c-3ab3-4c0f-aad4-d741be1d7ca3",
+           "assetId": 108263,
+           "assetVersionId": 110280,
+           "status": "success",
+           "type": "create",
+           "messages": []
+       },
+       {
+           "correlationId": "d81acecf-bd60-4a0e-a982-68d17c746c74",
+           "assetId": null,
+           "assetVersionId": null,
+           "status": "pending",
+           "type": "create",
+           "messages": []
+       },
+       {
+           "correlationId": "4fe194a3-45e7-4a44-b7c4-70a6a6a2e86e",
+           "assetId": null,
+           "assetVersionId": null,
+           "status": "inProgress",
+           "type": "create",
+           "messages": []
+       },
+       {
+           "correlationId": "e71d01fd-1d2d-4214-98f4-586f1db44c02",
+           "assetId": null,
+           "assetVersionId": null,
+           "status": "failed",
+           "type": "create",
+           "messages": [
+               {
+                   "message": "The content at https://www.gstatic.com/webp/gallery3/1.sm.pnx has an invalid file extension .pnx",
+                   "type": "invalidFileExtension",
+                   "severity": "error"
+               }
+           ]
+       },
+       {
+           "correlationId": "e266e3ca-8495-4d9a-abb1-58206e933561",
+           "assetId": null,
+           "assetVersionId": null,
+           "status": "failed",
+           "type": "create",
+           "messages": [
+               {
+                   "message": "Invalid subcode OCOM057",
+                   "type": "invalidSubcode",
+                   "severity": "error"
+               }
+           ]
+       }
+   ]
 }
 ```
 
@@ -240,8 +240,16 @@ Returns the status of a request.
 ## Accepted File Extensions
 - See ![AcceptedFileExtensions.json](AcceptedFileExtensions.json?raw=true "AcceptedFileExtension") for a list of accepted file extensions and the mappings used when no file extension is present on the URL.
 
-## Versioning Stratergy
-Versioning stratergy based on https://semver.org/
+## Request Limits
+- Download Timeout : currently there is an individual upload timeout of 9m 30s, any single asset, in a bulk or single request, exceeding this limit will be marked as failed.
+- Request Json Body Size : 1048576 bytes (1MB)
+- Max number of assets in a single bulk request : 1000
+- Max File Size as content url : 2147483648 bytes (2GB)
+
+Note : There are currently no limits in place around concurrent running requests but we are looking at putting limits in place in future versions, a throttle on concurrent requests or at operation level.
+
+## Versioning Strategy
+Versioning strategy based on https://semver.org/
 
 X.Y.Z | Major.Minor.Patch
 
@@ -252,5 +260,4 @@ Minor : Non breaking change
 Patch : Backwards compatible bug fixes
 
 # Known Issues
-- If the content at the URL takes longer than 10 minutes to download the asset operation will get stuck in an 'inProgress' state. 
-
+- If the content at the URL takes longer than 10 minutes to download, the asset operation will get stuck in an 'inProgress' state.
