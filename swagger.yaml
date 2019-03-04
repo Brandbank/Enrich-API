@@ -456,11 +456,11 @@ components:
         - invalidUrl
         - invalidFileExtension
         - unableToResolveFileExtension 
-        - nonExistingSubcode
-        - unauthorisedSubcode
-        - noCreatePermission
+        - invalidSubcode
         - fileSizeLimitExceeded
         - failure
+        - internalServerError
+        - missingPermissions
     Error:
       x-oad-type: object
       type: object
