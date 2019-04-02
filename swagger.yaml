@@ -3,7 +3,7 @@ info:
   title: Enrich API
   version: 1.0.0
 servers:
-  - url: TBC
+  - url: https://enrichapi.brandbank.com/enrich
 paths:
   /asset:
     x-oad-type: operation
@@ -12,7 +12,7 @@ paths:
         - Single Operations
       description: Creates Enrich asset.
       servers:
-        - url: 'TBC'
+        - url: 'https://enrichapi.brandbank.com/enrich'
       parameters:
         - name: user_credential
           in: header
@@ -80,7 +80,7 @@ paths:
         - Bulk Operations
       description: Creates an Enrich asset(s).
       servers:
-        - url: 'TBC'
+        - url: 'https://enrichapi.brandbank.com/enrich'
       parameters:
         - name: user_credential
           in: header
@@ -148,7 +148,7 @@ paths:
         - Query Operations
       description: Get the status of an operation.
       servers:
-        - url: 'TBC'
+        - url: 'https://enrichapi.brandbank.com/enrich'
       parameters:
       - name: id
         in: path

@@ -25,7 +25,10 @@ Requests made to the API that do not pass this swagger schema will be rejected a
 ```
 
 # Endpoints
-## PUT api/bulk/asset
+
+Base URL : https://enrichapi.brandbank.com/enrich
+
+## PUT bulk/asset
 Creates a set of enrich assets. On success, returns a 202 HTTP status code along with a receipt ID which is used to query the status of the request.
 
 A ``correlationId`` must be provided for each asset. This ``correlationId`` is later returned by ``GET receipt/{receiptId}`` to identify the created asset. The ``correlationId`` property must be unique within a request.
@@ -126,7 +129,7 @@ A ``correlationId`` must be provided for each asset. This ``correlationId`` is l
    "receiptId": "f7b3c859-d3dc-4831-b83b-9d2f3ffd9f98"
 }
 ```
-## PUT api/asset
+## PUT asset
 Creates an enrich asset with the provided properties. On success, returns a 202 HTTP status code along with a receipt ID which is used to query the status of the request.
 
 A ``correlationId`` must be provided along with the asset. This ``correlationId`` is later returned by ``GET receipt/{receiptId}`` to identify the created asset.
