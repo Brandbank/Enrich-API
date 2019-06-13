@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
   title: Enrich API
-  version: 1.0.0
+  version: 2.0.0
 servers:
-  - url: https://enrichapi.brandbank.com/enrich
+  - url: URL_REPLACED_BY_DEPLOYMENT
 paths:
   /asset:
     x-oad-type: operation
@@ -12,7 +12,7 @@ paths:
         - Single Operations
       description: Creates Enrich asset.
       servers:
-        - url: 'https://enrichapi.brandbank.com/enrich'
+        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: user_credential
           in: header
@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/UnauthorisedResponse'
         '403':
           description: >-
             The supplied credentials do not have the correct permissions to perform the operation.
@@ -63,7 +63,79 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+        '500':
+          description: >-
+            An unhandled error occured while processing the request.
+            Please contact support in this instance.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
                 $ref: '#/components/schemas/Error'
+  '/link/{assetId}':
+    x-oad-type: operation
+    post:
+      tags:
+        - Single Operations
+      description: Replaces an existing asset's linked products.
+      servers:
+        - url: 'URL_REPLACED_BY_DEPLOYMENT'
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          x-oad-type: parameter
+          schema:
+            type: integer
+        - name: user_credential
+          in: header
+          description: Purpose Credential
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkProductsRequest'
+        required: true
+      responses:
+        '200':
+          description: Result of linking products to requested assets
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkProductsResponse'
+        '400':
+          description: >-
+            The request could not be processed.
+
+            This could be due to one of the following conditions:
+              * Missing credentials
+              * The request failed validation checks
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            The supplied credentials do not match an Enrich API user.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+        '403':
+          description: >-
+            The supplied credentials do not have the correct permissions to perform the operation.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '500':
           description: >-
             An unhandled error occured while processing the request.
@@ -80,7 +152,7 @@ paths:
         - Bulk Operations
       description: Creates an Enrich asset(s).
       servers:
-        - url: 'https://enrichapi.brandbank.com/enrich'
+        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: user_credential
           in: header
@@ -123,7 +195,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/UnauthorisedResponse'
         '403':
           description: >-
             The supplied credentials do not have the correct permissions to perform the operation.
@@ -131,7 +203,70 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+        '500':
+          description: >-
+            An unhandled error occured while processing the request.
+            Please contact support in this instance.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
                 $ref: '#/components/schemas/Error'
+  /bulk/link:
+    x-oad-type: operation
+    post:
+      tags:
+        - Bulk Operations
+      parameters:
+        - name: user_credential
+          in: header
+          description: Purpose Credential
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkLinkProductsRequest'
+        required: true
+      responses:
+        '200':
+          description: Result of linking products to requested assets
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkLinkProductsResponse'
+        '400':
+          description: >-
+            The request could not be processed.
+
+            This could be due to one of the following conditions:
+              * Missing credentials
+              * The request failed validation checks
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            The supplied credentials do not match an Enrich API user.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+        '403':
+          description: >-
+            The supplied credentials do not have the correct permissions to perform the operation.
+          x-oad-type: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '500':
           description: >-
             An unhandled error occured while processing the request.
@@ -148,20 +283,20 @@ paths:
         - Query Operations
       description: Get the status of an operation.
       servers:
-        - url: 'https://enrichapi.brandbank.com/enrich'
+        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
-      - name: id
-        in: path
-        required: true
-        x-oad-type: parameter
-        schema:
-          type: string
-      - name: user_credential
-        in: header
-        description: Purpose Credential
-        required: true
-        schema:
-          type: string
+        - name: id
+          in: path
+          required: true
+          x-oad-type: parameter
+          schema:
+            type: string
+        - name: user_credential
+          in: header
+          description: Purpose Credential
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -189,7 +324,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/UnauthorisedResponse'
         '403':
           description: >-
             The supplied credentials do not have the correct permissions to perform the operation.
@@ -197,7 +332,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ForbiddenResponse'
         '500':
           description: >-
             An unhandled error occured while processing the request.
@@ -221,6 +356,94 @@ components:
       required:
         - correlationId
         - asset
+    LinkProductsRequest:
+      x-oad-type: object
+      type: object
+      properties:
+        linkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductCode'
+      required:
+        - linkedProducts
+    LinkProductsResponse:
+      x-oad-type: object
+      type: object
+      properties:
+        requestId:
+          x-oad-type: string
+          type: string
+        assetId:
+          x-oad-type: integer
+          type: integer
+        linkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationResult'
+        unlinkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductUnlinkOperationResult'
+        status:
+           $ref: '#/components/schemas/ProductLinkOperationAssetStatus'
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationAssetMessage'
+    LinkProductsResult:
+      x-oad-type: object
+      type: object
+      properties:
+        assetId:
+          x-oad-type: integer
+          type: integer
+        linkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationResult'
+        unlinkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductUnlinkOperationResult'
+        status:
+           $ref: '#/components/schemas/ProductLinkOperationAssetStatus'
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationAssetMessage'
+    ProductLinkOperationResult:
+      x-oad-type: object
+      type: object
+      properties:
+        product:
+          $ref: '#/components/schemas/ProductCode'
+        status:
+          $ref: '#/components/schemas/ProductLinkOperationProductStatus'
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationProductLinkMessage'
+    ProductUnlinkOperationResult:
+      x-oad-type: object
+      type: object
+      properties:
+        product:
+          $ref: '#/components/schemas/ProductCode'
+        status:
+          $ref: '#/components/schemas/ProductLinkOperationProductStatus'
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductLinkOperationProductUnlinkMessage'
     BulkCreateAssetRequest:
       x-oad-type: object
       type: object
@@ -230,28 +453,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CreateAssetRequest'
-    Asset:
+    BulkLinkProductsRequest:
       x-oad-type: object
       type: object
       properties:
-        subcode:
-          $ref: '#/components/schemas/SubCode'
-        url:
+        assets:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkAssetProductsRequest'
+      required:
+        - assets
+    BulkLinkProductsResponse:
+      x-oad-type: object
+      type: object
+      properties:
+        requestId:
           x-oad-type: string
           type: string
-        embedded:
-          x-oad-type: boolean
-          type: boolean
-        metadata:
-          oneOf:
-            - $ref: '#/components/schemas/PublicAssetMetadata'
-            - $ref: '#/components/schemas/PrivateAssetMetadata'
-            - $ref: '#/components/schemas/InternalAssetMetadata'
-      required:
-        - subcode
-        - url
-        - embedded
-        - metadata
+        assets:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkProductsResult'
     PublicAssetMetadata:
       allOf:
         - $ref: '#/components/schemas/BaseAssetMetadata'
@@ -317,11 +541,38 @@ components:
           items:
             x-oad-type: string
             type: string
+        linkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductCode'
         folder:
           $ref: '#/components/schemas/Folder'
       required:
         - name
         - ownerEmail
+    Asset:
+      x-oad-type: object
+      type: object
+      properties:
+        subcode:
+          $ref: '#/components/schemas/SubCode'
+        url:
+          x-oad-type: string
+          type: string
+        embedded:
+          x-oad-type: boolean
+          type: boolean
+        metadata:
+          oneOf:
+            - $ref: '#/components/schemas/PublicAssetMetadata'
+            - $ref: '#/components/schemas/PrivateAssetMetadata'
+            - $ref: '#/components/schemas/InternalAssetMetadata'
+      required:
+        - subcode
+        - url
+        - embedded
+        - metadata
     AssetType:
       x-oad-type: string
       type: string
@@ -345,6 +596,21 @@ components:
         - recipe
         - 3rdParty
         - other
+    ProductCode:
+      x-oad-type: object
+      type: object
+      properties:
+        subcode:
+          $ref: '#/components/schemas/SubCode'
+        codeType:
+          x-oad-type: string
+          type: string
+          enum:
+            - EAN
+            - EAN14
+        code:
+          x-oad-type: string
+          type: string
     SubCode:
       x-oad-type: string
       type: string
@@ -363,6 +629,20 @@ components:
           $ref: '#/components/schemas/Folder'
       required:
         - name
+    LinkAssetProductsRequest:
+      x-oad-type: object
+      type: object
+      properties:
+        assetId:
+          x-oad-type: integer
+          type: integer
+        linkedProducts:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductCode'
+      required:
+        - linkedProducts
     ReceiptResponse:
       x-oad-type: object
       type: object
@@ -381,8 +661,8 @@ components:
           x-oad-type: array
           type: array
           items:
-            $ref: '#/components/schemas/AssetOperationResult'
-    AssetOperationResult:
+            $ref: '#/components/schemas/CreateAssetOperationResult'
+    CreateAssetOperationResult:
       x-oad-type: object
       type: object
       properties:
@@ -402,33 +682,47 @@ components:
           nullable: true
           description: If the request was successful then this will be present
         status:
-          $ref: '#/components/schemas/OperationStatus'
+          $ref: '#/components/schemas/CreateAssetOperationStatus'
         type:
-          $ref: '#/components/schemas/OperationType'
+          $ref: '#/components/schemas/CreateAssetOperationType'
         messages:
           x-oad-type: array
           type: array
           items:
-            $ref: '#/components/schemas/Message'
+            $ref: '#/components/schemas/CreateAssetMessage'
       required:
         - correlationId
         - status
         - messages
         - type
-    OperationStatus:
+    CreateAssetOperationStatus:
       x-oad-type: string
       type: string
       enum:
         - pending
         - inProgress
         - success
+        - partialSuccess
         - failure
-    OperationType:
+    ProductLinkOperationAssetStatus:
+      x-oad-type: string
+      type: string
+      enum:
+        - success
+        - partialSuccess
+        - failure
+    ProductLinkOperationProductStatus:
+      x-oad-type: string
+      type: string
+      enum:
+        - success
+        - failure
+    CreateAssetOperationType:
       x-oad-type: string
       type: string
       enum:
         - create
-    Message:
+    CreateAssetMessage:
       x-oad-type: object
       type: object
       properties:
@@ -436,32 +730,128 @@ components:
           x-oad-type: string
           type: string
         type:
-          $ref: '#/components/schemas/MessageType'
+          $ref: '#/components/schemas/CreateAssetMessageType'
         severity:
-          x-oad-type: string
-          type: string
-          enum:
-            - info
-            - warning
-            - error
-    MessageType:
+          $ref: '#/components/schemas/MessageSeverity'
+    CreateAssetMessageType:
       x-oad-type: string
       type: string
       enum:
-        - created
         - assetOwnerDoesNotExist
         - assetOwnerDisabled
         - invalidAssetOwnerPermissions
         - downloadFailed
         - invalidUrl
         - invalidFileExtension
-        - unableToResolveFileExtension 
-        - invalidSubcode
+        - unableToResolveFileExtension
         - fileSizeLimitExceeded
-        - failure
         - internalServerError
         - missingPermissions
+        - downloadTimeout
+        - invalidAssetVisibility
+        - noMatchingProduct
+        - invalidProductState
+        - expiredAsset
+    ProductLinkOperationAssetMessage:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+        type:
+          $ref: '#/components/schemas/ProductLinkOperationAssetMessageType'
+        severity:
+          $ref: '#/components/schemas/MessageSeverity'
+    ProductLinkOperationProductLinkMessage:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+        type:
+          $ref: '#/components/schemas/ProductLinkOperationProductLinkMessageType'
+        severity:
+          $ref: '#/components/schemas/MessageSeverity'
+    ProductLinkOperationProductUnlinkMessage:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+        type:
+          $ref: '#/components/schemas/ProductLinkOperationProductUnlinkMessageType'
+        severity:
+          $ref: '#/components/schemas/MessageSeverity'
+    ProductLinkOperationProductLinkMessageType:
+      x-oad-type: string
+      type: string
+      enum:
+        - missingPermissions
+        - noMatchingProduct
+        - invalidProductState
+    ProductLinkOperationProductUnlinkMessageType:
+      x-oad-type: string
+      type: string
+      enum:
+        - productLinkRemoved
+        - linkedOnConnectTemplate
+    ProductLinkOperationAssetMessageType:
+      x-oad-type: string
+      type: string
+      enum:
+        - missingPermissions
+        - invalidAssetVisibility
+        - assetDoesNotExist
+        - expiredAsset
+        - historicAsset
+    ErrorMessage:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+        type:
+          $ref: '#/components/schemas/RequestErrorMessageType'
+        severity:
+          $ref: '#/components/schemas/MessageSeverity'
+    MessageSeverity:
+      x-oad-type: string
+      type: string
+      enum:
+        - info
+        - warning
+        - error
+    RequestErrorMessageType:
+      x-oad-type: string
+      type: string
+      enum: 
+        - duplicateAssetId
+        - duplicateProductCode
+        - invalidAssetVisibility
+        - internalServerError
+        - userCredentialError
+        - failure
     Error:
+      x-oad-type: object
+      type: object
+      properties:
+        messages:
+          x-oad-type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorMessage'
+    UnauthorisedResponse:
+      x-oad-type: object
+      type: object
+      properties:
+        message:
+          x-oad-type: string
+          type: string
+    ForbiddenResponse:
       x-oad-type: object
       type: object
       properties:
