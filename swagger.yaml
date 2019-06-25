@@ -3,7 +3,7 @@ info:
   title: Enrich API
   version: 2.0.0
 servers:
-  - url: URL_REPLACED_BY_DEPLOYMENT
+  - url: https://enrichapi.brandbank.com/enrich
 paths:
   /asset:
     x-oad-type: operation
@@ -11,8 +11,6 @@ paths:
       tags:
         - Single Operations
       description: Creates Enrich asset.
-      servers:
-        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: user_credential
           in: header
@@ -79,8 +77,6 @@ paths:
       tags:
         - Single Operations
       description: Replaces an existing asset's linked products.
-      servers:
-        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: assetId
           in: path
@@ -151,8 +147,6 @@ paths:
       tags:
         - Bulk Operations
       description: Creates an Enrich asset(s).
-      servers:
-        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: user_credential
           in: header
@@ -282,8 +276,6 @@ paths:
       tags:
         - Query Operations
       description: Get the status of an operation.
-      servers:
-        - url: 'URL_REPLACED_BY_DEPLOYMENT'
       parameters:
         - name: id
           in: path
