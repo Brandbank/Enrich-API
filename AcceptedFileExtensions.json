@@ -54,6 +54,7 @@
         "xhtml",
         "xls",
         "xlsx",
+        "xlsm",
         "xml",
         "xps",
         "zip",
@@ -242,6 +243,10 @@
         {
             "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             "fileExtension": "xlsx"
+        },
+        {
+            "mimeType": "application/vnd.ms-excel.sheet.macroenabled.12",
+            "fileExtension": "xlsm"
         },
         {
             "mimeType": "text/xml",
